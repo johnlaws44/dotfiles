@@ -13,6 +13,7 @@
 - NeoVim
 - NvChad
 
+## Migration Instructions
 1. Start with cloning the files down into a directory under `~/dotfiles`.
 2. Then cp the files into their respective locations:
    - `~/.bashrc`
@@ -29,7 +30,7 @@ There are certainly better ways to acheive this, but this more explicit method w
 
 The document will not contain all steps to reproduce the environment.
 
-# Images
+## Images
 
 ![image](https://github.com/johnlaws44/dotfiles/assets/47838352/5a2cb8d3-9e8f-4bfb-888a-82bb6d75c927)
 
