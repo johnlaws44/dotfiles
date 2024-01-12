@@ -18,14 +18,14 @@
    - `~/.bashrc`
    - `~/.zshrc`
    - `~/.config/tmux/tmux.conf`
-   - `~/.config/nvim/lua/custom/` (for all lua files)
+   - `~/.config/nvim/lua/custom/`
    - `~/.oh-my-zsh/themes/custom.zsh-theme`
 
   The remaining files are for the Windows Terminal. You can copy sections of the settings.json into it's respective location.
   (Would not advise copying the entireity just sections around the default profile.)
   Store the images wherever you'd like, just link to them within the settings.json
 
-There are certainly better ways to acheive this but this more explicit method will work for now.
+There are certainly better ways to acheive this, but this more explicit method will work for now.
 
 The document will not contain all steps to reproduce the environment.
 
