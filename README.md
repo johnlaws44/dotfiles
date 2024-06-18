@@ -21,6 +21,8 @@
    - `~/.config/tmux/tmux.conf`
    - `~/.config/nvim/lua/custom/`
    - `~/.oh-my-zsh/themes/custom.zsh-theme`
+   - `C:\Users\user_name\AppData\Local\Packages\Microsoft.WindowsTerminal_somehash\LocalState\wsl-settings.json`
+   - `C:\Users\john.laws\AppData\Roaming\Code\User\vscode-settings.json`
 
   The remaining files are for the Windows Terminal. You can copy sections of the settings.json into it's respective location.
   (Would not advise copying the entireity just sections around the default profile.)
