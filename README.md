@@ -1,4 +1,4 @@
-## Development Environment Configuration
+# Development Environment Configuration
 
 ### This document will serve as a light walkthrough of setting up my personal development environment.
 
@@ -33,9 +33,13 @@ There are certainly better ways to acheive this, but this more explicit method w
 The document will not contain all steps to reproduce the environment.
 
 ## Images
-
+### Windows Terminal
 ![image](https://github.com/johnlaws44/dotfiles/assets/47838352/5a2cb8d3-9e8f-4bfb-888a-82bb6d75c927)
 
 ![image](https://github.com/johnlaws44/dotfiles/assets/47838352/8b9ca028-30dd-451b-b25b-2b5b67db6cd2)
 
+### nvim
 ![image](https://github.com/johnlaws44/dotfiles/assets/47838352/c4d94043-4324-4036-aa07-57c997901ea2)
+
+### vscode
+
