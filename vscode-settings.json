@@ -22,16 +22,7 @@
     "editor.findMatchBackground": "#ffe60070", //Current SEARCH MATCH
     "editor.findMatchHighlightBackground": "#ffe60023" //Other SEARCH MATCHES
   },
-  "markdown.validate.enabled": true,
-  "markdown.validate.fileLinks.enabled": "warning",
-  "markdown.validate.fileLinks.markdownFragmentLinks": "warning",
-  "markdown.links.openLocation": "beside",
-  "files.trimTrailingWhitespace": false,
-  "files.trimFinalNewlines": false,
-  "files.autoSave": "afterDelay",
-  "files.autoSaveDelay": 5000,
-  "files.autoSaveWhenNoErrors": true,
-  "terminal.integrated.automationProfile.linux": {},
+  // "terminal.integrated.automationProfile.linux": {},
   "terminal.integrated.defaultProfile.linux": "debian",
   "terminal.integrated.fontFamily": "JetBrains Mono",
   "terminal.integrated.fontWeight": "bold",
@@ -40,7 +31,10 @@
       "path": "wsl.exe",
       "args": [
         "-d",
-        "Debian"
+        "Debian",
+        "--exec",
+        "zsh",
+        "-l"
       ],
       "icon": "terminal-debian",
       "useWslProfile": true,
@@ -48,16 +42,119 @@
       "name": "Debian",
     },
   },
+  "github.copilot.editor.enableAutoCompletions": true,
+  "git.openRepositoryInParentFolders": "never",
+  "background.autoInstall": true,
+  "debug.inlineValues": "off",
   "diffEditor.ignoreTrimWhitespace": false,
   "explorer.confirmDragAndDrop": false,
   "editor.wordWrap": "on",
   "editor.fontFamily": "JetBrains Mono",
   "editor.fontWeight": "1000",
   "editor.fontLigatures": true,
-  "editor.formatOnSave": true,
-  "editor.formatOnSaveMode": "modifications",
-  "editor.formatOnPaste": true,
   "editor.fontVariations": false,
+  "editor.stickyScroll.enabled": false,
+  "editor.renderWhitespace": "none",
+  "java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/intellij-java-google-style.xml",
+  "java.format.settings.profile": "GoogleStyle",
+  "java.format.enabled": true,
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "[java]": {
+    "editor.formatOnSave": false,
+    // "editor.formatOnSaveMode": "modifications",
+    "editor.formatOnPaste": false,
+    // "editor.defaultFormatter": "josevseb.google-java-format-for-vs-code",
+    "editor.tabSize": 2,
+    "editor.inlayHints.enabled": "off",
+    // "editor.autoIndent": "advanced",
+    // "editor.detectIndentation": true
+  },
+  "[csharp]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "modifications",
+    "editor.formatOnPaste": true,
+    "editor.tabSize": 2,
+    "editor.inlayHints.enabled": "off",
+    "editor.autoIndent": "advanced",
+    "editor.detectIndentation": true,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+  },
+  "[ruby]": {
+    // "editor.defaultFormatter": "",
+    "editor.formatOnType": false,
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "modifications",
+    "editor.formatOnPaste": true,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": false,
+    "editor.rulers": [
+      120
+    ],
+  },
+  // The ruby LSP extension is not working as of 12/11/2024
+  // "rubyLsp.rubyExecutablePath": "/home/jlaws44/run_ruby_lsp.sh",
+  // "rubyLsp.formatter": "rubocop",
+  // "rubyLsp.rubyVersionManager": {
+  //   "identifier": "asdf"
+  // },
+  // "rubyLsp.enabledFeatures": {
+  //   "codeActions": true,
+  //   "diagnostics": true,
+  //   "documentHighlights": true,
+  //   "documentLink": true,
+  //   "documentSymbols": true,
+  //   "foldingRanges": true,
+  //   "formatting": true,
+  //   "hover": true,
+  //   "inlayHint": true,
+  //   "onTypeFormatting": true,
+  //   "selectionRanges": true,
+  //   "semanticHighlighting": true,
+  //   "completion": true,
+  //   "codeLens": true,
+  //   "definition": true,
+  //   "workspaceSymbol": true,
+  //   "signatureHelp": true,
+  //   "typeHierarchy": true
+  // },
+  "[plantuml]": {
+    "editor.tabSize": 2,
+  },
+  "[markdown]": {
+    "diffEditor.ignoreTrimWhitespace": true
+  },
+  "markdown.validate.enabled": true,
+  "markdown.validate.fileLinks.enabled": "warning",
+  "markdown.validate.fileLinks.markdownFragmentLinks": "warning",
+  "markdown.links.openLocation": "beside",
+  // "editor.semanticHighlighting.enabled": true,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 5000,
+  "files.autoSaveWhenNoErrors": true,
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "window.zoomLevel": 1,
+  "chat.commandCenter.enabled": false,
+  "workbench.layoutControl.enabled": false,
+  "window.commandCenter": false,
+  "window.density.editorTabHeight": "compact",
+  "window.menuBarVisibility": "compact",
+  "workbench.editor.editorActionsLocation": "titleBar",
+  "sonarlint.focusOnNewCode": false,
+  // "emeraldwalk.runonsave": {
+  //   "commands": [
+  //     {
+  //       "match": "\\.java$",
+  //       "isAsync": true,
+  //       "cmd": "mvn com.spotify.fmt:fmt-maven-plugin:format"
+  //     }
+  //   ]
+  // },
   "editor.tokenColorCustomizations": {
     "comments": "#ffffff85",
     // Hacky way to remove italics (sorry)
@@ -171,22 +268,6 @@
       }
     ]
   },
-  "editor.stickyScroll.enabled": false,
-  "editor.renderWhitespace": "none",
-  "[ruby]": {
-    "editor.defaultFormatter": "Shopify.ruby-lsp",
-    "editor.formatOnSave": true,
-    "editor.formatOnType": true,
-    "editor.tabSize": 2,
-    "editor.insertSpaces": true,
-    "files.trimTrailingWhitespace": true,
-    "files.insertFinalNewline": true,
-    "files.trimFinalNewlines": true,
-    "editor.rulers": [
-      120
-    ],
-    "editor.semanticHighlighting.enabled": true
-  },
-  "github.copilot.editor.enableAutoCompletions": true,
-  "git.openRepositoryInParentFolders": "never"
+  "terminal.integrated.suggest.enabled": true,
+  "workbench.statusBar.visible": false,
 }
