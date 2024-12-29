@@ -72,13 +72,13 @@ ZSH_THEME="custom"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 asdf
-fzf-zsh-plugin
 git
 sudo
 web-search
 you-should-use
 zsh-autosuggestions
 zsh-syntax-highlighting
+fzf-zsh-plugin
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -109,7 +109,69 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export PATH="$HOME/bin:$PATH"
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
+
+export BROWSER="/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe"
+
 # Aliases
 alias vim=nvim
+alias vi=nvim
+
+# Function to handle sudo with vim, vi, and nvim
+sudo() {
+    if [[ $1 == "vim" || $1 == "vi" || $1 == "nvim" ]]; then
+        local cmd=$1
+        shift
+        command sudo -E nvim -u ~/.config/nvim/init.lua "$@"
+    else
+        command sudo "$@"
+    fi
+}
+
+alias assume=". assume"
+
+# Auto export and list AWS creds
+awscred () {
+    if [ -f $HOME/.aws/credentials ]
+    then
+        rm $HOME/.aws/credentials
+    fi
+    if [ -n "$1" ]
+    then
+        source assume --export "$1"
+    else
+        source assume --export
+    fi
+    sed -i 's#'$AWS_PROFILE'#default#' $HOME/.aws/credentials
+    echo "default profile set to $AWS_PROFILE"
+}
+
+# Maven
+alias start="mvn spring-boot:run -Dspring-boot.run.profiles=local"
+alias test="mvn clean verify"
+alias check="mvn com.spotify.fmt:fmt-maven-plugin:check"
+alias format="mvn com.spotify.fmt:fmt-maven-plugin:format"
+alias build="mvn install -DskipTests"
+
+# postgres
+
+typeset -A dbnames
+dbnames=(
+  
+)
+
+function connect() {
+  local key=$1
+  local dbname=${dbnames[$key]}
+  if [ -n "$dbname" ]; then
+    pgcli postgresql://admin:1234@localhost:5432/$dbname
+  else
+    echo "Database alias '$key' not found."
+  fi
+}
+
 # Run neofetch at startup
 neofetch
+
