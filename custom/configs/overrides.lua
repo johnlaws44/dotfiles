@@ -12,6 +12,7 @@ M.treesitter = {
     "c",
     "markdown",
     "markdown_inline",
+    "java",
   },
   indent = {
     enable = true,
@@ -33,6 +34,8 @@ M.mason = {
     "typescript-language-server",
     "deno",
     "prettier",
+    "csharp-language-server",
+    "java-language-server",
 
     -- c/cpp stuff
     "clangd",
