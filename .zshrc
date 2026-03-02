@@ -1,6 +1,3 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -109,11 +106,20 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export PATH="$HOME/bin:$PATH"
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+# [[ "$TERM_PROGRAM" == "vscode" ]] && . "$(code --locate-shell-integration-path zsh)"
 
-export BROWSER="/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe"
+# VS Code shell integration
+if [[ -n "$VSCODE_INJECTION" ]] || command -v code &> /dev/null; then
+    TERM_PROGRAM="vscode"
+    [[ -f "$(code --locate-shell-integration-path zsh 2>/dev/null)" ]] && . "$(code --locate-shell-integration-path zsh)"
+fi
+
+export ASDF_DATA_DIR=/home/jlaws44/.asdf
+export PATH="$HOME/.local/bin:$ASDF_DATA_DIR/shims:$HOME/bin:$HOME/.dotnet/tools:$PATH"
+
+export JAVA_HOME=$(asdf where java)
+
+export BROWSER="/mnt/c/Program Files/Google/Chrome/Application/chrome.exe"
 
 # Aliases
 alias vim=nvim
@@ -129,6 +135,9 @@ sudo() {
         command sudo "$@"
     fi
 }
+
+alias pbcopy="xclip -selection clipboard"
+alias pbpaste="xclip -selection clipboard -o"
 
 alias assume=". assume"
 
@@ -150,16 +159,16 @@ awscred () {
 
 # Maven
 alias start="mvn spring-boot:run -Dspring-boot.run.profiles=local"
-alias test="mvn clean verify"
-alias check="mvn com.spotify.fmt:fmt-maven-plugin:check"
-alias format="mvn com.spotify.fmt:fmt-maven-plugin:format"
-alias build="mvn install -DskipTests"
+alias debug="mvn spring-boot:run -Dspring-boot.run.profiles=local -Dspring-boot.run.jvmArguments='-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005'"
+alias test="mvn clean verify -Dfmt.skip=true -Dspotless.check.skip=true"
+alias check="mvn spotless:check"
+alias format="mvn spotless:apply"
+alias build="mvn install -DskipTests -Dfmt.skip=true -Dspotless.check.skip=true"
 
 # postgres
 
 typeset -A dbnames
 dbnames=(
-  
 )
 
 function connect() {
@@ -174,4 +183,3 @@ function connect() {
 
 # Run neofetch at startup
 neofetch
-
