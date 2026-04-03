@@ -1,0 +1,119 @@
+{
+  "env": {
+    "MAX_THINKING_TOKENS": "39999",
+    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "50",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "haiku",
+    "CLAUDE_CODE_MAX_OUTPUT_TOKENS": "35990",
+    "CLAUDE_CODE_FILE_READ_MAX_OUTPUT_TOKENS": "20000",
+    "MAX_MCP_OUTPUT_TOKENS": "20000",
+    "BASH_MAX_OUTPUT_LENGTH": "25000",
+    "TASK_MAX_OUTPUT_LENGTH": "30000",
+    "DISABLE_NON_ESSENTIAL_MODEL_CALLS": "1",
+    "DISABLE_COST_WARNINGS": "1",
+    "CLAUDE_CODE_GLOB_TIMEOUT_SECONDS": "8",
+    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1",
+    "CLAUDE_CODE_GLOB_HIDDEN": "0"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(ast-grep:*)",
+      "Bash(asdf:*)",
+      "Bash(basename:*)",
+      "Bash(bat:*)",
+      "Bash(cat:*)",
+      "Bash(cd:*)",
+      "Bash(chmod +x:*)",
+      "Bash(date:*)",
+      "Bash(diff:*)",
+      "Bash(dirname:*)",
+      "Bash(dust:*)",
+      "Bash(echo:*)",
+      "Bash(eza:*)",
+      "Bash(fd:*)",
+      "Bash(file:*)",
+      "Bash(find:*)",
+      "Bash(gh api:*)",
+      "Bash(gh issue:*)",
+      "Bash(gh pr:*)",
+      "Bash(gh project:*)",
+      "Bash(git branch:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git ls-files:*)",
+      "Bash(git remote:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(git show:*)",
+      "Bash(git stash list:*)",
+      "Bash(git status:*)",
+      "Bash(git tag:*)",
+      "Bash(head:*)",
+      "Bash(id:*)",
+      "Bash(jq:*)",
+      "Bash(ls:*)",
+      "Bash(md5sum:*)",
+      "Bash(mkdir:*)",
+      "Bash(pwd:*)",
+      "Bash(readlink:*)",
+      "Bash(realpath:*)",
+      "Bash(rg:*)",
+      "Bash(rm:*)",
+      "Bash(sha256sum:*)",
+      "Bash(sort:*)",
+      "Bash(stat:*)",
+      "Bash(strings:*)",
+      "Bash(tail:*)",
+      "Bash(tokei:*)",
+      "Bash(touch:*)",
+      "Bash(tree:*)",
+      "Bash(uname:*)",
+      "Bash(unzip:*)",
+      "Bash(uv:*)",
+      "Bash(wc:*)",
+      "Bash(wget:*)",
+      "Bash(which:*)",
+      "Bash(xxd:*)",
+      "Edit",
+      "Write",
+      "WebSearch"
+    ],
+    "deny": []
+  },
+  "model": "sonnet",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/read-once/hook.sh"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/custom/ccburn-warn.sh"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "$HOME/.claude/custom/statusline-command.sh",
+    "padding": 0
+  },
+  "enabledPlugins": {
+    "ruby-lsp@claude-plugins-official": true,
+    "jdtls-lsp@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true
+  },
+  "syntaxHighlightingDisabled": true,
+  "effortLevel": "medium",
+  "voiceEnabled": true
+}

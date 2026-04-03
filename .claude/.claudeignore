@@ -1,0 +1,27 @@
+# Build output
+target/
+dist/
+build/
+out/
+coverage/
+
+# Dependencies
+node_modules/
+vendor/
+
+# Python
+__pycache__/
+**/__pycache__/
+**/*.pyc
+.venv/
+
+# Lock files
+package-lock.json
+yarn.lock
+uv.lock
+poetry.lock
+Gemfile.lock
+
+# Databases
+*.db
+*.sqlite
